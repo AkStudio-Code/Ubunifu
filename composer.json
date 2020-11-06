@@ -4,7 +4,7 @@
     "description": "A minimalistic fast php-mvc framework for php webapps and websites",
     "keywords": ["Framework","PHP MVC"],
     "homepage": "https://github.com/AkStudio-Code/Ubunifu",
-    "license": "GNU",
+    "license": "proprietary",
     "authors": [
         { 
             "name": "Alex Kekee",
