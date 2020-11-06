@@ -74,7 +74,7 @@ class Session
      */
     public static function set($key, $value = false)
     {
-        self::$prefix = Config::load('session_prefix','app');
+        self::$prefix = \AppConfig::load('session_prefix','app');
         if (is_array($key) && $value == false) {
             foreach ($key as $name => $value) {
                 $_SESSION[$name] = $value;

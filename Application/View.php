@@ -17,8 +17,8 @@ class View
     function __construct()
     {
         $this->mapper =  new Url();
-        $this->host = Config::load('base_url','app');
-        $this->app_name = Tri_Model::App()->urlTabs()->getApp();
+        $this->host = \AppConfig::load('base_url','app');
+        $this->app_name = Model::App()->urlTabs()->getApp();
 
     }
 
@@ -38,10 +38,10 @@ class View
         $this ->src = $this->resourceDir();
         $this ->ubunifu_dir = $this->ubunifuAssets();
        if($this ->use_template){
-           require Config::load('app_dir','app').self::view_dir.'/_theme.php';
+           require \AppConfig::load('app_dir','app').self::view_dir.'/_theme.php';
        }else{
            if (isset($this->file)) {
-               require Config::load('app_dir','app').Tri_Model::App()->urlTabs()->getApp().'/'.self::view_dir.'/'.$this->file.'.php';
+               require \AppConfig::load('app_dir','app').Model::App()->urlTabs()->getApp().'/'.self::view_dir.'/'.$this->file.'.php';
            }
        }
     }
@@ -53,21 +53,21 @@ class View
     function content($file)
     {
         if (isset($file)) {
-            require Config::load('app_dir','app').Tri_Model::App()->urlTabs()->getApp().'/'.self::view_dir.'/'.$file.'.php';
+            require \AppConfig::load('app_dir','app').Model::App()->urlTabs()->getApp().'/'.self::view_dir.'/'.$file.'.php';
         }
     }
 
     function layout($file)
     {
         if (isset($file)) {
-            require Config::load('app_dir','app').self::view_dir.'/'.$file.'.php';
+            require \AppConfig::load('app_dir','app').self::view_dir.'/'.$file.'.php';
 
         }
     }
 
     function url()
     {
-        return Config::load('base_url','app');
+        return \AppConfig::load('base_url','app');
     }
 
     function resourceDir()
@@ -95,7 +95,7 @@ class View
     function phpAjax()
     {
         if (isset($file)) {
-            require Config::load('app_dir','app').self::view_dir.'/'.$file.'.php';
+            require \AppConfig::load('app_dir','app').self::view_dir.'/'.$file.'.php';
 
         }
     }

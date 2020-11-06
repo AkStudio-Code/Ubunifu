@@ -24,17 +24,17 @@ class Url
 
     function getApp()
     {
-        return !empty($this->route[0]) ? $this->route[0] : Config::load('default_app', 'app');
+        return !empty($this->route[0]) ? $this->route[0] : \AppConfig::load('default_app', 'app');
     }
 
     function getController()
     {
-        return !empty($this->route[1]) ? $this->route[1] : Config::load('controller', 'app');
+        return !empty($this->route[1]) ? $this->route[1] : \AppConfig::load('controller', 'app');
     }
 
     function getAction()
     {
-        return !empty($this->route[2]) ? $this->route[2] : Config::load('action', 'app');
+        return !empty($this->route[2]) ? $this->route[2] : \AppConfig::load('action', 'app');
 
     }
 
@@ -48,7 +48,7 @@ class Url
 
     function pretifierController ($controller_name)
     {
-        if (Config::load('pretty_url','app')) {
+        if (\AppConfig::load('pretty_url','app')) {
             if (!is_null($controller_name)) {
                 $pretty_url = explode('-', $controller_name);
                 if (array_count_values($pretty_url) > 1) {
@@ -66,7 +66,7 @@ class Url
 
     function  pretifierAction($action_name)
     {
-        if (Config::load('pretty_url','app')) {
+        if (\AppConfig::load('pretty_url','app')) {
             if (!is_null($action_name)) {
                 $pretty_url = explode('-', $action_name);
                 if (array_count_values($pretty_url) > 1) {

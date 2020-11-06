@@ -17,18 +17,18 @@ class Model
 
     public static function App()
     {
-        return new Tri_Model();
+        return new Model();
     }
 
     public function Db()
     {
-        return new DatabaseFactory(new Connection('mysql', Config::all('db')));
+        return new DatabaseFactory(new Connection('mysql', \AppConfig::all('db')));
     }
 
 
     public function url()
     {
-        return Config::load('base_url', 'app');
+        return \AppConfig::load('base_url', 'app');
     }
 
     public function urlTabs()

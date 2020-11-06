@@ -23,13 +23,13 @@ class Controller
 
     function __construct()
     {
-         $this->requires_auth = Config::load('requires_auth','app');
-         $this ->app_auth = new ApplicationAuth();
+         $this->requires_auth = \AppConfig::load('requires_auth','app');
+        /* $this ->app_auth = new ApplicationAuth();
          //$this ->app_auth->checkSessionConcurrency();
         // user is not logged in but has remember-me-cookie ? then try to login with cookie ("remember me" feature)
         if (!$this->app_auth->userIsLoggedIn() AND Request::cookie('remember_me')) {
             header('location: ' . $this->url() . 'AUTH/account/loginWithCookie');
-        }
+        }*/
           $this->setAssets();
           $this->view = new View();
 
@@ -62,11 +62,11 @@ class Controller
         $this->assets = array_merge($this->datatable_css,$this->datatable_js);
     }
     function Db(){
-        return new DatabaseFactory( new Connection('mysql',Config::all('db')));
+        return new DatabaseFactory( new Connection('mysql',\AppConfig::all('db')));
     }
 
     function url (){
-        return Config::load('base_url','app');
+        return \AppConfig::load('base_url','app');
     }
 
     function urlTabs(){

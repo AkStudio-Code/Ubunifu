@@ -34,7 +34,7 @@ class Log
      */
     public static function createLogFile()
     {
-        $path = Config::load('log_file_path','app');
+        $path = \AppConfig::load('log_file_path','app');
         $time = date(static::$options['dateFormat']);
         $session_user = 'app';
         static::$log_file =   $path."log-{$time}_{$session_user}.txt";
