@@ -17,8 +17,7 @@
     "require": {
         "php": ">=5.3.0",
         "rych/phpass": "^2.0",
-        "illuminate/database": "^8.13",
-        "triposhub/modules":"dev-main"
+        "illuminate/database": "^8.13"
     },
     "autoload": {
         "psr-0": {
