@@ -1,6 +1,6 @@
 <?php
 
-namespace Ubunifu\application;
+namespace triposhub\Ubunifu\application;;
 
 class Log
 {

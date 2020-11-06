@@ -1,6 +1,6 @@
 <?php
 
-namespace Ubunifu\application;
+namespace triposhub\Ubunifu\application;;
 
 use Pixie\Connection;
 use Pixie\Exception;

@@ -1,6 +1,6 @@
 <?php
 
-
+namespace triposhub\Ubunifu\application;
 use Phpass\Hash;
 
 class Security
