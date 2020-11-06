@@ -1,6 +1,6 @@
 {
     "name": "triposhub/ubunifu",
-    "type": "project",
+    "type": "library",
     "description": "A minimalistic fast php-mvc framework for php webapps and websites",
     "version":"1.0.1",
     "keywords": ["Framework","PHP MVC"],
