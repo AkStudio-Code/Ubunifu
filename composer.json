@@ -1,5 +1,5 @@
 {
-    "name": "triposhub/Ubunifu",
+    "name": "triposhub/ubunifu",
     "type": "library",
     "description": "A minimalistic fast php-mvc framework for php webapps and websites",
     "version":"1.0.1",
