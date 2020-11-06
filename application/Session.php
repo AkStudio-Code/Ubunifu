@@ -1,7 +1,7 @@
 <?php
 
 
-namespace triposhub\Ubunifu\application;
+namespace Triposhub\Ubunifu\Application;
 
 
 class Session
@@ -74,7 +74,7 @@ class Session
      */
     public static function set($key, $value = false)
     {
-        self::$prefix = Ak::App()->customConfig('session_prefix');
+        self::$prefix = Config::load('session_prefix','app');
         if (is_array($key) && $value == false) {
             foreach ($key as $name => $value) {
                 $_SESSION[$name] = $value;
@@ -187,9 +187,7 @@ class Session
 
 
     public static function updateSessionId($user_id, $session_id){
-        $database = Ak::App()->Database();
-        $database = $database ->setBuilder($database ->getDb());
-        $database -> table('users') ->where('user_id' ,'=', $user_id)->update(
+        Tri_Model::App()->Db()->QBuilder()-> table('users') ->where('user_id' ,'=', $user_id)->update(
             ['session_id' => $session_id]
         );
 

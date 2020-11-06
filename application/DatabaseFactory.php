@@ -1,6 +1,6 @@
 <?php
 
-namespace triposhub\Ubunifu\application;;
+namespace Triposhub\Ubunifu\Application;
 
 use Pixie\Connection;
 use Pixie\Exception;
@@ -29,5 +29,10 @@ class DatabaseFactory
 
     function getPdo(){
         return $this ->connection ->getPdoInstance();
+    }
+
+    function connection()
+    {
+        return $this->connection;
     }
 }

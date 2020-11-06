@@ -2,9 +2,10 @@
 $config = array(
     /*DATABASE*/
         'driver'    => 'mysql', // Db driver
+        'adapter' => 'mysql',
         'host'      => 'localhost',
-        'database'  => 'ubunifu_erp',
-        'username'  => 'akroot',
+        'database'  => 'wbcca',
+        'username'  => 'root',
         'password'  => 'akroot',
         'charset'   => 'utf8', // Optional
         'collation' => 'utf8_unicode_ci', // Optional
@@ -13,6 +14,7 @@ $config = array(
             PDO::ATTR_TIMEOUT => 5,
             PDO::ATTR_EMULATE_PREPARES => false,
             ]
+
 
 
 );

@@ -1,7 +1,6 @@
 <?php
 
-
-namespace triposhub\Ubunifu\application;
+namespace Triposhub\Ubunifu\Application;
 
 
 class View
@@ -10,6 +9,9 @@ class View
     public $mapper;
     public $host ;
     public $app_name;
+    private  $src;
+    private  $ubunifu_dir;
+    public $use_template = true;
 
 
     function __construct()
@@ -33,17 +35,33 @@ class View
                 $this->{$key} = $value;
             }
         }
-
         $this ->src = $this->resourceDir();
         $this ->ubunifu_dir = $this->ubunifuAssets();
-
-        require Config::load('app_dir','app').Tri_Model::App()->urlTabs()->getApp().'/'.self::view_dir.'/_theme.php';
+       if($this ->use_template){
+           require Config::load('app_dir','app').self::view_dir.'/_theme.php';
+       }else{
+           if (isset($this->file)) {
+               require Config::load('app_dir','app').Tri_Model::App()->urlTabs()->getApp().'/'.self::view_dir.'/'.$this->file.'.php';
+           }
+       }
+    }
+    function useTemplate($option = true)
+    {
+        $this ->use_template = $option;
     }
 
     function content($file)
     {
         if (isset($file)) {
             require Config::load('app_dir','app').Tri_Model::App()->urlTabs()->getApp().'/'.self::view_dir.'/'.$file.'.php';
+        }
+    }
+
+    function layout($file)
+    {
+        if (isset($file)) {
+            require Config::load('app_dir','app').self::view_dir.'/'.$file.'.php';
+
         }
     }
 
@@ -62,4 +80,25 @@ class View
         return $this ->url().'src/ubunifu/';
 
     }
+    /**
+     * Converts characters to HTML entities
+     * This is important to avoid XSS attacks, and attempts to inject malicious code in your page.
+     *
+     * @param  string $str The string.
+     * @return string
+     */
+    public function encodeHTML($str)
+    {
+        return htmlentities($str, ENT_QUOTES, 'UTF-8');
+    }
+
+    function phpAjax()
+    {
+        if (isset($file)) {
+            require Config::load('app_dir','app').self::view_dir.'/'.$file.'.php';
+
+        }
+    }
+
+
 }

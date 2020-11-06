@@ -1,7 +1,7 @@
 <?php
 
 
-namespace triposhub\Ubunifu\application;
+namespace Triposhub\Ubunifu\Application;
 
 
 class Bootstrap
@@ -24,15 +24,15 @@ class Bootstrap
 
     function __construct()
     {
+
+
         $this->host= Config::load('base_url','app');
 
         $mapper = new Url();
-        $this->app = $mapper->getApp();
+        $this->app =strtoupper( $mapper->getApp());
         $controller = $mapper->getController();
         $action = $mapper->getAction();
         $parameters = $mapper->getParams();
-
-
 
         if (Config::load('pretty_url', self::APP_CONFIG)) {
             $this->controller_name = $mapper->pretifierController($controller);
@@ -64,8 +64,8 @@ class Bootstrap
     {
         if (is_dir(Config::load('app_dir', self::APP_CONFIG))) {
             if (file_exists(Config::load('app_dir', self::APP_CONFIG) . $this->app . '/' . self::controller_dir . self::DIRECTORY_SEPARATOR . $this->controller_name . '.php')) {
-                {
-                    $this->controller = new  $this->controller_name ();
+                require Config::load('app_dir', self::APP_CONFIG) . $this->app . '/' . self::controller_dir . self::DIRECTORY_SEPARATOR . $this->controller_name . '.php';
+                $this->controller = new  $this->controller_name ();
                     if (is_callable(array($this->controller, $this->action_name))) {
                         if (!empty($this->parameters)) {
                             call_user_func_array(array($this->controller, $this->action_name), $this->parameters);
@@ -73,9 +73,8 @@ class Bootstrap
                             $this->controller->{$this->action_name}();
                         }
                     } else {
-                        // echo '404 not found';
+                         echo '404 not found';
                     }
-                }
 
             } else {
                require '_404_error.php';

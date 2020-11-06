@@ -1,6 +1,6 @@
 <?php
 
-namespace triposhub\Ubunifu\application;
+namespace Triposhub\Ubunifu\Application;
 
 class Url
 {
@@ -24,7 +24,7 @@ class Url
 
     function getApp()
     {
-        return strtoupper(!empty($this->route[0]) ? $this->route[0] : Config::load('default_app', 'app'));
+        return !empty($this->route[0]) ? $this->route[0] : Config::load('default_app', 'app');
     }
 
     function getController()

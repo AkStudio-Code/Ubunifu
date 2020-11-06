@@ -1,7 +1,7 @@
 <?php
 
 
-namespace triposhub\Ubunifu\application;;
+namespace Triposhub\Ubunifu\Application;
 
 
 class Request

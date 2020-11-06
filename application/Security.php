@@ -1,6 +1,6 @@
 <?php
+namespace Triposhub\Ubunifu\Application;
 
-namespace triposhub\Ubunifu\application;
 use Phpass\Hash;
 
 class Security
@@ -76,17 +76,23 @@ class Security
 
     /**
      * Hash a password string
-     * @param $pass
+     * @param $password
+     * @param int $iteration
      * @return string
      */
-    static function hashPass($pass): string {
-         $passHash = new Hash(new Hash\Adapter\Pbkdf2(['iterations' => 15000]));
-         return $passHash->hashPassword($pass);
+    static function hashPass($password, $iteration=15000): string {
+         $passHash = self::Pbkdf($iteration);
+         return $passHash->hashPassword($password);
      }
 
-     static function checkOldPass($supplied_pass,$db_pass){
-         $compare = new Hash(new Hash\Adapter\Pbkdf2(['iterations' => 15000]));
+     static function passwordCompare($supplied_pass,$db_pass){
+         $compare = self::Pbkdf(15000);
 
          return $compare->checkPassword($supplied_pass, $db_pass);
+     }
+
+     static function Pbkdf($iteration=15000)
+     {
+        return new Hash(new Hash\Adapter\Pbkdf2(['iterations' => $iteration]));
      }
 }
