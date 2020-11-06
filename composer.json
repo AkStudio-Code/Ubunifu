@@ -20,8 +20,8 @@
         "illuminate/database": "^8.13"
     },
     "autoload": {
-        "psr-0": {
-            "Ubunifu": "application"
+        "psr-4": {
+            "Triposhub\\Ubunifu\\Application": ""
         }
     }
 }
