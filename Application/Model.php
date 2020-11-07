@@ -5,6 +5,7 @@ namespace Triposhub\Ubunifu\Application;
 use Biwi\Auth\BAuth;
 use Biwi\Auth\Channel;
 use Biwi\Auth\UserModel;
+use Illuminate\Database\Capsule\Manager;
 use Pixie\Connection;
 use PragmaRX\Random\Random;
 
@@ -20,9 +21,10 @@ class Model
         return new Model();
     }
 
-    public function Db()
+    public static function Db()
     {
-        return new DatabaseFactory(new Connection('mysql', \AppConfig::all('db')));
+       $db =  new DatabaseFactory();
+       return $db ->UseIlluminateDB();
     }
 
 
