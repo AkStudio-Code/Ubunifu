@@ -30,7 +30,7 @@ class Controller
         if (!$this->app_auth->userIsLoggedIn() AND Request::cookie('remember_me')) {
             header('location: ' . $this->url() . 'AUTH/account/loginWithCookie');
         }*/
-        
+          $this->setAssets();
           $this->view = new View();
 
     }
