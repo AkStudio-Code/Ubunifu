@@ -55,7 +55,7 @@ class DatabaseFactory
     function UseIlluminateDB()
     {
         $capsule = new Manager();
-        $capsule->addConnection(AppConfig::all('db'));
+        $capsule->addConnection(\AppConfig::all('db'));
         $capsule->setAsGlobal();
         $capsule->bootEloquent();
         return $capsule;

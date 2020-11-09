@@ -4,6 +4,7 @@ use Authentication\validation\AuthValidate;
 use Authentication\validation\UserValidation;
 use DbIlluminate\Db\DatabaseFactory;
 use MongoDB\Driver\Manager;
+use Triposhub\Ubunifu\Application\Model;
 
 class User implements UserInterface
 {
@@ -54,7 +55,7 @@ class User implements UserInterface
 
     function getUserByUserEmail($user_email)
     {
-        $user_validation = new \UserManagement\Authentication\Auth\UserValidation();
+        $user_validation = new \Triposhub\Ubunifu\Application\Validation\UserValidation();
         $user = $user_validation ->getUser($user_email);
         if($user_validation ->checkIfUserExists($user)){
             return  $user;

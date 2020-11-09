@@ -3,8 +3,9 @@ namespace Triposhub\Ubunifu\Application\Validation;
 use Authentication\auth\User;
 use DbIlluminate\Db\DatabaseFactory;
 use Illuminate\Database\Capsule\Manager;
+use Triposhub\Ubunifu\Application\Model;
 
-class UserValidation extends User
+class UserValidation extends \Triposhub\Ubunifu\Application\Auth\User
 {
     function __construct()
     {
@@ -19,7 +20,7 @@ class UserValidation extends User
 
     public function getUser($user_email)
     {
-        return Model::table('users')->get(array('user_name','user_email','is_active','user_password'))->where('user_email', '=', $user_email);
+        return Model::Db()::table('users')->get(array('user_email','is_active','user_password'))->where('user_email', '=', $user_email);
     }
 
 

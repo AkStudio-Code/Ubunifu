@@ -39,24 +39,18 @@ class Xauth implements XauthInterface
         return Request::post('user_password');
     }
 
-    /**
-     * @return mixed
-     */
     function getUserGroup()
     {
 
     }
 
-    /**
-     * @return mixed
-     */
     function login() : bool
     {
        $user =  $this ->Usercls ->getUserByUserEmail('stellexy@gmail.com');
          if(!is_null($user)){
              $this ->user = $user;
-             $auth = new \UserManagement\Authentication\Validation\AuthValidate();
-             return $auth ->checkPassword('12345678',$user->first()->user_password);
+             $auth = new \Triposhub\Ubunifu\Application\Validation\AuthValidate();
+            return $auth ->checkPassword('12345678',$user->first()->user_password);
          }
          return  false;
     }
@@ -73,7 +67,9 @@ class Xauth implements XauthInterface
     function AuthenticateUser()
     {
         if($this->login()){
-            $this->sessionAddUser($this->user,['user_name','user_email','is_active']);
+            $this->sessionAddUser($this->user,['user_email','is_active']);
+            return true;
         }
+        return false;
     }
 }

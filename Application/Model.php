@@ -8,6 +8,8 @@ use Biwi\Auth\UserModel;
 use Illuminate\Database\Capsule\Manager;
 use Pixie\Connection;
 use PragmaRX\Random\Random;
+use Triposhub\Ubunifu\Application\Auth\User;
+use Triposhub\Ubunifu\Application\Auth\Xauth;
 
 class Model
 {
@@ -43,9 +45,9 @@ class Model
         return new Random();
     }
 
-    public function Auth()
+    public static function Auth()
     {
-        return new BAuth(new UserModel(new Channel($this->Db()->connection())));
+        return new Xauth(new User());
     }
 
 

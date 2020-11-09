@@ -13,7 +13,7 @@ class AuthValidate
   function passwordAdapter()
   {
       $adapter = new Pbkdf2(array (
-          'iterationCountLog2' => 16, 'iterations' =>1500
+          'iterations' =>15000
       ));
 
       return new Hash($adapter);
