@@ -38,8 +38,8 @@ class Redirect
      *
      * @param $path string
      */
-    public static function to($path)
+    public static function to($full_path)
     {
-        header("location: " . Tri_Model::App()->url() . $path);
+        header("location: ",Model::App()->base_url() .$path);
     }
 }

@@ -27,7 +27,7 @@ class Bootstrap
     {
         $this->host= \AppConfig::load('base_url','app');
         $mapper = new Url();
-        $this->app =strtolower( $mapper->getApp());
+        $this->app =strtoupper( $mapper->getApp());
         $controller = $mapper->getController();
         $action = $mapper->getAction();
         $parameters = $mapper->getParams();

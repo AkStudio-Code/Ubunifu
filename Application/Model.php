@@ -35,6 +35,12 @@ class Model
         return \AppConfig::load('base_url', 'app');
     }
 
+    public function base_url()
+    {
+        return \AppConfig::load('site_url', 'app');
+
+    }
+
     public function urlTabs()
     {
         return new Url();

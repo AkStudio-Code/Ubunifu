@@ -24,7 +24,7 @@ class Url
 
     function getApp()
     {
-        return !empty($this->route[0]) ? $this->route[0] : \AppConfig::load('default_app', 'app');
+        return strtolower(!empty($this->route[0]) ? $this->route[0] : \AppConfig::load('default_app', 'app'));
     }
 
     function getController()
